@@ -3,9 +3,10 @@ import pino, { Logger } from 'pino';
 import { LoggerConfigService } from './logger.config';
 import * as process from 'node:process';
 import { join } from 'node:path';
+import { LogWriter } from 'drizzle-orm/logger';
 
 @Injectable({ scope: Scope.TRANSIENT })
-export class PinoLogger extends ConsoleLogger {
+export class PinoLogger extends ConsoleLogger implements LogWriter {
     private logger: Logger;
 
     constructor(private readonly loggerConfigService: LoggerConfigService) {
@@ -53,6 +54,12 @@ export class PinoLogger extends ConsoleLogger {
 
     warn(message: any) {
         this.logger.warn(
+            `${this.context ? `[${this.context}]: ` : ''}${message}`,
+        );
+    }
+
+    write(message: any) {
+        this.logger.info(
             `${this.context ? `[${this.context}]: ` : ''}${message}`,
         );
     }

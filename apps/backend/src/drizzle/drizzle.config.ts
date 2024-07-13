@@ -9,6 +9,7 @@ export const drizzleConfigSchema = z.object({
     DB_USER: z.string().default('postgres'),
     DB_PASSWORD: z.string().default('postgres'),
     DB_TYPE: z.enum(['postgres']).default('postgres'),
+    DB_LOG: z.coerce.boolean().default(false),
 });
 
 @Global()
@@ -43,5 +44,9 @@ export class DrizzleConfigService {
 
     get type() {
         return this.configService.get('DB_TYPE', { infer: true });
+    }
+
+    get dbLog() {
+        return this.configService.get('DB_LOG', { infer: true });
     }
 }
