@@ -17,6 +17,7 @@ export class PinoLogger extends ConsoleLogger implements LogWriter {
                     target: 'pino-pretty',
                     options: {
                         colorize: true,
+                        singleLine: true,
                     },
                 },
                 ...(this.loggerConfigService.logToFile
@@ -35,32 +36,47 @@ export class PinoLogger extends ConsoleLogger implements LogWriter {
     }
 
     log(message: any) {
-        this.logger.info(
-            `${this.context ? `[${this.context}]: ` : ''}${message}`,
-        );
+        if (typeof message === 'string') {
+            return this.logger.info(
+                `${this.context ? `[${this.context}]: ` : ''}${message}`,
+            );
+        }
+        this.logger.info(message, `[${this.context}]`);
     }
 
     fatal(message: any) {
-        this.logger.fatal(
-            `${this.context ? `[${this.context}]: ` : ''}${message}`,
-        );
+        if (typeof message === 'string') {
+            return this.logger.fatal(
+                `${this.context ? `[${this.context}]: ` : ''}${message}`,
+            );
+        }
+        this.logger.fatal(message, `[${this.context}]`);
     }
 
     error(message: any) {
-        this.logger.error(
-            `${this.context ? `[${this.context}]: ` : ''}${message}`,
-        );
+        if (typeof message === 'string') {
+            return this.logger.error(
+                `${this.context ? `[${this.context}]: ` : ''}${message}`,
+            );
+        }
+        this.logger.error(message, `[${this.context}]`);
     }
 
     warn(message: any) {
-        this.logger.warn(
-            `${this.context ? `[${this.context}]: ` : ''}${message}`,
-        );
+        if (typeof message === 'string') {
+            return this.logger.warn(
+                `${this.context ? `[${this.context}]: ` : ''}${message}`,
+            );
+        }
+        this.logger.warn(message, `[${this.context}]`);
     }
 
     write(message: any) {
-        this.logger.info(
-            `${this.context ? `[${this.context}]: ` : ''}${message}`,
-        );
+        if (typeof message === 'string') {
+            return this.logger.info(
+                `${this.context ? `[${this.context}]: ` : ''}${message}`,
+            );
+        }
+        this.logger.info(message, `[${this.context}]`);
     }
 }
