@@ -3,9 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { validate } from './env/env.validate';
-import { AppConfigService } from './app.config';
 import { DrizzleModule } from './drizzle/drizzle.module';
 import { LoggerModule } from './logger/logger.module';
+import { EnvModule } from './env/env.module';
 
 @Module({
     imports: [
@@ -15,8 +15,9 @@ import { LoggerModule } from './logger/logger.module';
         }),
         DrizzleModule,
         LoggerModule,
+        EnvModule,
     ],
     controllers: [AppController],
-    providers: [AppService, AppConfigService],
+    providers: [AppService],
 })
 export class AppModule {}

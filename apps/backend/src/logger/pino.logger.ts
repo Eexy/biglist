@@ -1,6 +1,6 @@
 import { ConsoleLogger, Injectable, Scope } from '@nestjs/common';
 import pino, { Logger } from 'pino';
-import { LoggerConfigService } from './logger.config';
+import { LoggerConfigService } from '../env/config/logger-config.service';
 import * as process from 'node:process';
 import { join } from 'node:path';
 import { LogWriter } from 'drizzle-orm/logger';

@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { AppConfigService } from './app.config';
+import { AppConfigService } from './env/config/app-config.service';
 import { PinoLogger } from './logger/pino.logger';
-import { LoggerConfigService } from './logger/logger.config';
+import { LoggerConfigService } from './env/config/logger-config.service';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, {

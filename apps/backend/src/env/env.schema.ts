@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { appConfigSchema } from '../app.config';
-import { drizzleConfigSchema } from '../drizzle/drizzle.config';
-import { loggerConfigSchema } from '../logger/logger.config';
+import { appConfigSchema } from './config/app-config.service';
+import { drizzleConfigSchema } from './config/drizzle-config.service';
+import { loggerConfigSchema } from './config/logger-config.service';
 
 export const envSchema = z
     .object({})
