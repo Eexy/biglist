@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 export const appConfigSchema = z.object({
-    PORT: z.coerce.number().nonnegative().default(3002),
+    PORT: z.coerce.number().nonnegative().default(3000),
     NODE_ENV: z
         .enum(['development', 'production', 'test'])
         .default('development'),
