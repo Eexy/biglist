@@ -33,19 +33,27 @@ export class PinoLogger extends ConsoleLogger {
         this.logger = pino(transport);
     }
 
-    log(message: any, context?: string) {
-        this.logger.info(message, context);
+    log(message: any) {
+        this.logger.info(
+            `${this.context ? `[${this.context}]: ` : ''}${message}`,
+        );
     }
 
-    fatal(message: any, context?: string) {
-        this.logger.fatal(message, context);
+    fatal(message: any) {
+        this.logger.fatal(
+            `${this.context ? `[${this.context}]: ` : ''}${message}`,
+        );
     }
 
-    error(message: any, stackOrContext?: string) {
-        this.logger.error(message, stackOrContext);
+    error(message: any) {
+        this.logger.error(
+            `${this.context ? `[${this.context}]: ` : ''}${message}`,
+        );
     }
 
-    warn(message: any, context?: string) {
-        this.logger.warn(message, context);
+    warn(message: any) {
+        this.logger.warn(
+            `${this.context ? `[${this.context}]: ` : ''}${message}`,
+        );
     }
 }
